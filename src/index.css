@@ -1,13 +1,76 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  height: 100vh;
+  background: linear-gradient(rgb(135, 49, 185), rgb(139, 6, 73));
 }
+
+img {
+  width: 100px;
+}
+
+.game-container {
+  width: 600px;
+  height: 600px;
+  margin: 10% auto;
+  display: flex;
+  flex-wrap: wrap;
+  /* Perspective da da dubinu elementu */
+  perspective: 1000px;
+}
+
+.control {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin-top: 10px;
+
+}
+
+.card-holder {
+  width: 25%;
+  height: 33.33%;
+  position: relative;
+  transform:scale(1);
+  /*Perserve3d da sacuva dubinu koju smo dobili od perspective*/
+  transform-style: preserve-3d;
+  transition: transform .6s;
+}
+
+.card-holder:active {
+  transform: scale(.97);
+  transition: transform .3s;
+}
+
+.card-holder.flip {
+  transform: rotateY(180deg);
+}
+
+.face-card,.back-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  /*Svakihtmlelementimabackface,rotateYprikazujeslikukaoodrazuogledaludasakrijemotokoristisebackfacenahidden*/
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.face-card {
+  transform: rotateY(180deg);
+}
+
+.resetBtn {
+  padding: 5px 10px;
+  transition-duration: 0.4s;
+  background-color: #c51743;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
