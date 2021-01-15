@@ -10,9 +10,10 @@ const GameContainer = ({ imgNum, cardFlip }) => {
                    
         >
             {
-                imgNum.map( card => {
+                imgNum.map( (card, i) => {
                     return(
                         <CardContainer 
+                            key={i}
                             faceCard={ `/memory-cards/img${ card }.jpeg` }
                             backCard={ `/memory-cards/img0.jpeg` }
                             faceCardClass="face-card"
