@@ -91,7 +91,7 @@ img {
 
 .endGame {
   width: 300px;
-  margin: 30%;
+  margin: 20% auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
