@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(rgb(135, 49, 185), rgb(139, 6, 73));
+  background: rgb(140, 67, 153);
 }
 
 img {
@@ -16,7 +16,7 @@ img {
 .game-container {
   width: 600px;
   height: 600px;
-  margin: 10% auto;
+  margin: 5% auto;
   display: flex;
   flex-wrap: wrap;
   /* Perspective da da dubinu elementu */
@@ -24,18 +24,18 @@ img {
 }
 
 .control {
+  width: 600px;
+  margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   align-content: center;
   margin-top: 10px;
-
 }
 
 .card-holder {
   width: 25%;
   height: 33.33%;
-  position: relative;
   transform:scale(1);
   /*Perserve3d da sacuva dubinu koju smo dobili od perspective*/
   transform-style: preserve-3d;
@@ -73,4 +73,34 @@ img {
   border: 1px solid white;
   border-radius: 5px;
 }
+
+.pop-up{
+  visibility: hidden;
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: seashell;
+  border-radius: 30px;
+  position: absolute;
+  top:30%;
+  transform: translate(50%, -50%);
+}
+
+.endGame {
+  width: 300px;
+  margin: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+  .endGame>h1 {
+    padding-bottom: 10px;
+  }
 

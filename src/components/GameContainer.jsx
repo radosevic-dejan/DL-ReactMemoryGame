@@ -1,13 +1,17 @@
 import React from 'react';
 import CardContainer from './CardContainer'
 
-const GameContainer = ({ imgNum, cardFlip }) => {
+const displayNone = {
+    display: 'none'
+}
+
+const GameContainer = ({ imgNum, cardFlip, endGame }) => {
 
     return(
         <div 
             className="game-container"  
             onClick={ e => cardFlip(e) }
-                   
+            style={ endGame === true ? displayNone : {display: 'flex'}}          
         >
             {
                 imgNum.map( (card, i) => {

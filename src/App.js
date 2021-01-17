@@ -30,10 +30,15 @@ class App extends Component {
     lockFlip: false,
     playerMoves: 5,
     points: 0,
+    message: '',
+    endGame: false
   };
 
-  handleReset = () => {
-    return this.setState({
+  handleReset = (e) => {
+    const targetElements = e.target.parentElement.parentElement
+    const cardHolders = Array.from(targetElements.children[1].children).filter(e => e.classList.contains('flip'))
+    cardHolders.forEach(e => e.classList.remove('flip'))
+    this.setState({
       imgNum: shuffle(imgID),
       flipedCard: false,
       firstCard: null,
@@ -42,8 +47,11 @@ class App extends Component {
       lockFlip: false,
       playerMoves: 5,
       points: 0,
+      message: '',
+      endGame: false
     });
   };
+
 
   cardFlip = async (e) => {
     let flipedCard = this.state.flipedCard;
@@ -54,6 +62,21 @@ class App extends Component {
     if (lockUntilFlip) return;
     if (targetName === firstCard) return;
     targetName.classList.toggle('flip');
+
+    console.log(this)
+
+    if(this.state.playerMoves === 0 && this.state.points === 5){
+      
+      return(
+        await this.setState({ message: "won", endGame: true})
+      )
+    }
+
+    if(this.state.playerMoves === 0 && this.state.points !== 5){
+      return(
+        await this.setState({ message: "lose", endGame: true })
+      )
+    }
 
     if (!flipedCard) {
       // Igrač prvi put klikce na kartu
@@ -78,6 +101,7 @@ class App extends Component {
     const secondCard = this.state.secondCard;
     const points = this.state.points;
     const moves = this.state.playerMoves;
+    
     if (firstCard.dataset.name === secondCard.dataset.name) {
       // console.log(this.state.lockFlip)
       this.setState({ points: points + 1, lockFlip: true }, () => {
@@ -106,13 +130,16 @@ class App extends Component {
         <ControlPanel
           playerMoves={this.state.playerMoves}
           points={this.state.points}
-          handleReset={this.handelReset}
+          handleReset={this.handleReset}
+          endGame={this.state.endGame}
+          message={ this.state.message }
         />
 
         <GameContainer
           imgNum={this.state.imgNum}
           cardFlip={this.cardFlip}
           lockFlip={this.state.lockFlip}
+          endGame={this.state.endGame}
         />
       </div>
     );
