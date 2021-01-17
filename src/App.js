@@ -65,14 +65,14 @@ class App extends Component {
 
     console.log(this)
 
-    if(this.state.playerMoves === 0 && this.state.points === 5){
+    if(this.state.points === 6){
       
       return(
         await this.setState({ message: "won", endGame: true})
       )
     }
 
-    if(this.state.playerMoves === 0 && this.state.points !== 5){
+    if(this.state.playerMoves === 0){
       return(
         await this.setState({ message: "lose", endGame: true })
       )
